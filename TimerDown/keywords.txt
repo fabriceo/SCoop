@@ -1,0 +1,33 @@
+#######################################
+# Syntax Coloring Map SCoop
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+TimerDown  KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+reset KEYWORD2
+set KEYWORD2
+get KEYWORD2
+pause KEYWORD2
+resume KEYWORD2
+paused KEYWORD2
+
+#######################################
+# Atributes (KEYWORD2)
+#######################################
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+TimerDownOneWeekSec LITERAL1
+TimerDownBillionMs LITERAL1
+TimerDownMillionSec LITERAL1
+TimerDownOneWeekMs LITERAL1
+TimerDownOneWeekSec LITERAL1
+TimerDown30Seconds LITERAL1
