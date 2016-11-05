@@ -46,7 +46,7 @@ typedef struct CoopTask {
 
 static CoopTask *cur = 0;
 
-static CoopTask* __attribute__((noinline)) coopSchedule(char taskDied) {
+static CoopTask* __attribute__((noinline)) __attribute__((used)) coopSchedule(char taskDied) {
 	CoopTask* next = cur->next;
 
 	if (taskDied) {
