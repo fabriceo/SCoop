@@ -182,6 +182,7 @@ static inline micros_t SCoopMicros16(void) // same as standrad PJRC micros, but 
 		  
 #else // end of CORE_TEENSY. Now same job for the Arduino wiring.c library
 extern volatile unsigned long timer0_overflow_count; // use this variable which is incremented at each overflow
+static unsigned long tell_compiler_that_i_really_need_this = timer0_overflow_count;	// ugly hack to force the compiler to REALLY keep timer0_overflow_count
 static inline micros_t SCoopMicros16(void) __attribute__((always_inline));
 static inline micros_t SCoopMicros16(void) // same as standrad PJRC micros, but in 16 bits and with inlining
 {	register micros_t out ;
