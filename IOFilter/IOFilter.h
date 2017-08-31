@@ -172,6 +172,7 @@ class InputFilter : IOFilterItem
 private:
   void init(uint8_t pin, int16_t timeOn, int16_t timeOff);
 
+protected:
   uint8_t       pin,value,last;
   int16_t       timeOn, timeOff, time;
   IOFilter_Counter_t counter;
