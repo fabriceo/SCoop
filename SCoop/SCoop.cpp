@@ -182,6 +182,7 @@ static inline micros_t SCoopMicros16(void) // same as standrad PJRC micros, but 
 		  
 #else // end of CORE_TEENSY. Now same job for the Arduino wiring.c library
 extern volatile unsigned long timer0_overflow_count; // use this variable which is incremented at each overflow
+static unsigned long tell_compiler_that_i_really_need_this = timer0_overflow_count;	// ugly hack to force the compiler to REALLY keep timer0_overflow_count
 static inline micros_t SCoopMicros16(void) __attribute__((always_inline));
 static inline micros_t SCoopMicros16(void) // same as standrad PJRC micros, but in 16 bits and with inlining
 {	register micros_t out ;
@@ -195,12 +196,10 @@ static inline micros_t SCoopMicros16(void) // same as standrad PJRC micros, but 
 		"sbrs	__zero_reg__, %4"			"\n\t"
 		"rjmp	L_%=_skip"					"\n\t"
 		"cpi	%A0, 255"					"\n\t"
-		"breq	L_%=_skip"					"\n\t"
-#if F_CPU == 16000000L 
+		"breq	L_%=_skip"					"\n\t" 
+		
 		"subi	%B0, 1"						"\n\t"
-#elif F_CPU == 8000000L 
-		"subi	%B0, 2"						"\n\t"
-#endif		
+	
 	"L_%=_skip:"							"\n\t"
 		"clr	__zero_reg__"				"\n\t"
 		"clr	__tmp_reg__"				"\n\t"
@@ -255,7 +254,7 @@ if ((itemType == SCoopDynamicTask) || (itemType == SCoopTaskType)) {
     SCINM.targetCycleMicros -= reinterpret_cast<SCoopTask*>(this)->quantumMicros; // reduce target cycle time
 	SCoopNumberTask--;	
 #if SCoopYIELDCYCLE == 0	
-	if (SCoopNumberTask>0) { SCINM.quantumMicrosReal = quantumMicros / SCoopNumberTask; }
+	if (SCoopNumberTask>0) { SCINM.quantumMicrosReal = SCINM.quantumMicros / SCoopNumberTask; }
 #endif	
 #if SCoopANDROIDMODE >=2
 if (itemType == SCoopDynamicTask)  { 
