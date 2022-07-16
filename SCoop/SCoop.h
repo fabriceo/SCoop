@@ -22,7 +22,7 @@
 // SCOOPTIMEREPORT enable time control variables in SCoopTask and enables cycletime average calculation. accept following values:
 // 4 -> 16 cycle average, 3->8 average cycles, 2 ->4 cycle average , 1 -> 2 cycles average, 
 // 0 : NO TIME MEASUREMENT , NO VARIABLES yieldMicros,cycleMicros,maxCycleMicros,maxYieldMicros...
-#define  SCoopTIMEREPORT    1        // default value =1 in order to prioritize performance for the user program.
+#define  SCoopTIMEREPORT    0        // default value =1 in order to prioritize performance for the user program.
                                      // overload to 4 in ARM section, if this definition was not 0, as we have more power in ARM
 
 #define  SCoopYIELDCYCLE    1        // if set to 1, yield will automatically launch all tasks in the list 
